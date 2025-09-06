@@ -89,7 +89,7 @@ endfunction
 
 function! s:error_message(result) abort
     echoerr 'clang-format has failed to format.'
-    if a:result =~# '^YAML:\d\+:\d\+: error: unknown key '
+    if a:result =~# '^YAML:\d\+:\d\+: error: unknown key ' || a:result =~# 'error: duplicated mapping key'
         echohl ErrorMsg
         for l in split(a:result, "\n")[0:1]
             echomsg l
